@@ -1,0 +1,98 @@
+Last login: Thu May 10 17:15:47 on ttys000
+longjichundeMac-mini:~ longjichun$ ssh root@172.16.1.71
+root@172.16.1.71's password: 
+Last login: Thu May 10 17:23:17 2018 from 172.16.20.162
+[root@localhost ~]# cd /home/
+[root@localhost home]# ls
+lost+found  mysql_tmp  rednet  svn  tools  www  wwwlogs  wwwroot
+[root@localhost home]# cd rednet/
+[root@localhost rednet]# ls
+logs                                      tomcat7-share
+mysql-community-release-el6-5.noarch.rpm  tomcat7-share.tar.gz
+picStorage                                tomcat7-wz-api
+pic.tar.gz                                tomcat7-wz-api-test
+software                                  tomcat7-xtxfb-api
+tomcat7-api                               tomcat7-xtxfb-cms
+tomcat7-api.tar.gz                        tomcat7-xtxfb-icp-timer
+tomcat7-cms                               tomcat7-xtxfb-share
+tomcat7-cms.tar.gz                        tomcat7-xtxfb-timer
+tomcat7-icp-timer                         tomcat-timer
+tomcat7-icp-timer.tar.gz                  tomcat-timer.tar.gz
+tomcat7-manager                           wget-log
+tomcat7-manager.tar.gz                    wget-log.1
+[root@localhost rednet]# cd tomcat7-share/webapps/ROOT/
+[root@localhost ROOT]# cd activity/
+[root@localhost activity]# cd anwser/
+[root@localhost anwser]# ls
+css     index.html  learling.html  node-v8.9.3-linux-x64  rank.html  share.html
+images  js          nodejs         pcindex.html           rule.html
+[root@localhost anwser]# vi index.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi ra
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+
+
+
+
+
+
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+[root@localhost anwser]# vi rank.html 
+
+        },
+        error: function(err){
+alert(err)      
+        }
+    });
+p.then(function(){1},function(){<div>alert(0</div>)})
+    function fillList(arr) {
+        // arr = [            {
+        //     "@type":"cn.rednet.moment.vo.AnswerRankVo",
+        //     "mobile":"15802636297", //手机号码
+        //     "scoreCount":9, //分数
+        //     "userName":"木木哈",//昵称
+        //     "utilityTime":240 //所用时间
+        // }]
+        if(!arr.length) {
+            $(".ranklist p").show()
+        }
+        var temp = ['<li class="','','">','<i>','','</i>','<span>',  ''  ,'</span><span>','','分</span><span class="per-time">','','</span></li>']
+        var str = ''
+        for(var i = 0,len = arr.length;i<len;i++ ) {
+            var val = arr[i]
+            if(i<3) {
+                temp[1] = 'forward'
+                temp[4] = ''
+            } else {
+                temp[4] = i+1;
+            }
+            temp[7] = val.userName
+            temp[9] = val.scoreCount
+            temp[11] = formatDuring(val.utilityTime*1000)
+            str = str + temp.join("")
+        }
+        str = str.replace(/<i><\/i>/g,'<i class="spritIcon"></i>')
+        $(".ranklist ul").html(str)
+    }
+</script>
+</body>
+</html>

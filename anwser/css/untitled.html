@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$.ajax({
+	        type: "get",
+	        async: false,
+	        url: "http://test.app.onlyred.net/" + "rednetMoment-http/rednetApi.opx?param={%22header%22:{userId:%22123%22,version:%226.2%22},%22method%22:%22createContentUps%22,%22myParams%22:[323943,%22news%22],%22service%22:%22cn.rednet.moment.services.ContentDetailApi%22,%22uuid%22:%22EED193780B6347D79CDE7103842A418D%22}",
+	        dataType: "jsonp",
+	        jsonp: "jsoncallback",
+	        jsonpCallback: "success_jsonpCallback",
+	        success: function(json) {
+	          alert('json'+json)
+	        }
+	    })
+	</script>
+</body>
+</html>

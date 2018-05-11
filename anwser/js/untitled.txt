@@ -1,0 +1,219 @@
+
+//. 正确答案分割。 传递的时间戳 单位格式. 毫秒 name从哪里来?
+// 冠军列表？
+
+// 单位名称。 验证码。 结果页姓名获取
+
+you1. 答题活动相关信息接口
+
+http://test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"123","version":"4.0"},"method":"answerInfo","myParams":[12],"service":"cn.rednet.moment.services.AnswerApi","uuid":"EED193780B6347D79CDE7103842A418D"}
+参数说明:  12  活动ID 
+json说明:
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"cn.rednet.moment.vo.AnswerInfoVo",
+        "activityId":12, //活动ID
+        "showBt":20, //题目数量
+        "startDate":1490716800000, //活动开始日期
+        "startTime":1490928155703, //答题开始时段
+        "endDate":1493395200000, //活动结束日期
+        "endTime":1490928158703, //活动结束时段
+        "EnrollStatus":1 //报名状态 1 已报名,0未报名
+        "status":"1" // -1:活动未开始 -2:活动已结束 -3:不在答题时段 
+                  // 0:活动红包额度不够 1:正常 2:已抽过一次红包 3:用户已参与过答题
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+
+
+2 题目列表接口
+test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"123","version":"4.0"},"method":"initAnswerInfoList","myParams":[19],"service":"cn.rednet.moment.services.AnswerApi","uuid":"EED193780B6347D79CDE7103842A418D"}
+参数说明:  12  活动ID
+json说明:
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"java.util.HashMap",
+        "answerCount":5,//题目数量
+        "answerList":[
+            {
+                "@type":"cn.rednet.moment.vo.AnswerSubjectVo",
+                "answerItems":[
+                    { 
+                        "btId":2,// 题目ID
+                        "btItem":"河道管理单位清除", //选项内容
+                        "btXx":"B", //选项符号
+                        "id":4 //选项ID
+                    },
+                    {
+                        "btId":2,
+                        "btItem":"谁设障，谁清除",
+                        "btXx":"A",
+                        "id":3
+                    }
+                ],
+                "btId":2,//题目ID
+                "btTips":"自己做的事自己负责", //提示
+                "btTitle":"《防洪法》规定，对河道、湖泊范围内阻碍行洪的障碍物，按照＿＿的原则，由防汛指挥机构责令限期清除。", //题目标题
+                "btType":1  //题目类型 1 // 单选      2// 多选
+            }
+        ],
+        "startDate":1490716800000, //活动开始日期
+        "startTime":1490928155703, //答题开始时段
+        "endDate":1493395200000, //活动结束日期
+        "endTime":1490928158703 //活动结束时段
+        "achvId":64//答题批次Id
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+
+
+3. 答题接口
+
+test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"123","version":"4.0"},"method":"submissionAnswerInfo","myParams":[11,64,2,"A"],"service":"cn.rednet.moment.services.AnswerApi","uuid":"EED193780B6347D79CDE7103842A418D"}
+参数说明:
+11 活动ID 
+64 答题批次ID
+2 题目ID
+"A" 答案
+json说明:
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"java.util.HashMap",
+        "answer":"A", //正确答案(status=0的时候才会有)
+        "status":"1" // -1:不在活动时间 -2:不在答题时段  -3: 已答错一次 -4: 重复答题  
+                  //0:答案错误 1:答案正确 2:当天答题已完成
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+4 答题完毕提交答题信息
+
+test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"123","version":"4.0"},"method":"submissionAnswerAchv","myParams":[11,64,123],"service":"cn.rednet.moment.services.AnswerApi","uuid":"EED193780B6347D79CDE7103842A418D"}
+参数说明:
+11 活动ID
+64 答题批次ID
+123  答题所用时间
+
+json说明
+
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"java.util.HashMap",
+        "errorCount":0, 答错
+        "correctCount ":20 答对
+        "id":21, //结果ID
+        "rank":1, //排名
+        "scoreCount":5, //得分
+        "status":"1",// 0:答题数不够 1:提交成功 2: 当天已提交过一次
+        "utilityTime":123, //所用时间(毫秒)
+        "winrate":100 //胜率,
+        "userName":'姓名'
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+
+5. 排行榜
+
+http://test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={%22header%22:{%22userId%22:%22123%22,%22version%22:%224.0%22},%22method%22:%22rankList%22,%22myParams%22:[12,10],%22service%22:%22cn.rednet.moment.services.AnswerApi%22,%22uuid%22:%22EED193780B6347D79CDE7103842A418D%22}
+
+参数说明:
+12 :活动ID
+10:显示个数
+
+json说明:
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"java.util.HashMap",
+        "championList":[//冠军列表
+            {
+                "@type":"cn.rednet.moment.vo.AnswerChampionVo",
+                "mobile":"15802636297",//手机号码
+                "userName":"哈哈"//昵称
+            }
+        ],
+        "rankList":[ //排行榜列表
+            {
+                "@type":"cn.rednet.moment.vo.AnswerRankVo",
+                "mobile":"15802636297", //手机号码
+                "scoreCount":9, //分数
+                "userName":"木木哈",//昵称
+                "utilityTime":240 //所用时间
+            }
+        ]
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+
+6. 分享详情
+http://test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"123","version":"4.0"},"method":"selectAnswerAchvInfo","myParams":[1],"service":"cn.rednet.moment.services.AnswerApi","uuid":"EED193780B6347D79CDE7103842A418D"}
+
+参数说明
+1:结果ID
+
+json说明:
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"cn.rednet.moment.pojo.ActivityAchv",
+        "achvRank":0,//排名
+        "activityId":12,//活动ID
+        "correctCount":1,//答对题目数
+        "id":1,//结果ID
+        "scoreCount":1,//总共得到多少分
+        "utilityTime":12,//所用时间
+        "questionCount":20//题目总数量
+        "winRate":100 //胜率
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}
+
+
+
+
+2 新增报名信息接口
+http://test.app.onlyred.net/rednetMoment-http/rednetApi.opx?param={"header":{"userId":"313272","version":"4.3"},"method":"addActivityEnroll","myParams":[12,1,"blue","13469072803","","芙蓉区",],"service":"cn.rednet.moment.services.AnswerApi","uuid":"F0A221F0E5DD49029F7C12ACAC288DEB"}
+
+
+
+参数说明
+
+12 活动ID
+1 用户类型  1 在校学生 2成年人
+blue 用户昵称
+13469072803 手机号码
+3016 短语验证码
+芙蓉区 所在区域
+
+json 说明
+{
+    "@type":"cn.rednet.openx.vo.ReturnMap",
+    "body":{
+        "@type":"java.util.HashMap",
+        "status":"1" // 1 成功 0 修改失败 
+                  // -1短信验证码已失效 -2短信验证码不正确 -3手机号码已绑定
+    },
+    "code":"0000",
+    "isEncrypt":"0",
+    "message":"SUCCESS"
+}

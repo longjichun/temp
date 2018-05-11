@@ -1,0 +1,18 @@
+/* 可以在此文件中对页面样式进行覆盖 */
+.main {
+    background-image: url("background-cover.png"),
+    linear-gradient(to bottom, #3C4B8F, #42549C 50%, #3D3686);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top, top;
+    background-size: contain, cover;
+
+}
+.main {background-image: url(background-cover.png),  url(../images/background-bottom.png),  url(),  linear-gradient(to bottom, #3C4B8F, #42549C 50%, #3D3686);background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;background-position: top, bottom, 50% 4rem, top;background-size: contain,contain, 2.7rem 2.7rem, cover;}
+
+/* 注册描述文字 */
+.layer-content-desc {
+    color: #2E4394;
+    text-align:left;
+    font-size: 0.2rem;
+    padding-left: 0.5rem;
+}

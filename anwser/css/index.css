@@ -1,0 +1,818 @@
+body, html {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-weight: normal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:white;
+}
+/* 遮罩 */
+.mask {
+    display: none;
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: initial;
+    background-color: rgba(0,0,0,.75);
+}
+
+/* 强制关注 */
+.qrloading {
+    position: relative;
+    text-align: center;
+    top: 20vh;
+    font-size: 0.4rem;
+}
+
+.qrloading img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.loading {
+    position: relative;
+    text-align: center;
+    top: 45vh;
+}
+.loading>img {
+    width: 0.38rem;
+    vertical-align: bottom;
+}
+.loading>span {
+    height: 0.38rem;
+    line-height: 0.38rem;
+    padding-left: 0.19rem;
+    color: #FFFFFF;
+    font-size: 0.38rem;
+}
+
+/* 主界面背景 */
+.main {
+    width: 100vw;
+    min-height: 100vh;
+    text-align: center;
+    background-image:
+            url("../images/background-top.png"),
+            url("../images/background-bottom.png"),
+            url("../images/pic-cup.png"),
+            linear-gradient(to bottom, #3C4B8F, #42549C 50%, #3D3686);
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: top, bottom, 50% 4rem, top;
+    background-size: contain,contain, 2.7rem 2.7rem, cover;
+}
+/* 主界面(无奖杯) */
+.main-nocup {
+    width: 100vw;
+    min-height: 100vh;
+    text-align: center;
+    background-image:
+            url("../images/background-top.png"),
+            url("../images/background-bottom.png"),
+            linear-gradient(to bottom, #3C4B8F, #42549C 50%, #3D3686);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: top, bottom, top;
+    background-size: contain, contain, cover;
+}
+
+/* 首页标题区域 */
+#titlebox {
+    margin-top: 2rem;
+    display: inline-block;
+    height: 2.3rem;
+    overflow: hidden;
+}
+/* 首页主标题 */
+.maintitle {
+    color: white;
+    font-weight: bold;
+    font-size: 0.65rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
+}
+/* 首页副标题 */
+.subtitle {
+    color: white;
+    font-weight: bold;
+    font-size: 0.4rem;
+    text-align: right;
+    margin-top: 0.13rem;
+    padding-right: 0.16rem;
+    margin-bottom: 0px;
+    text-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
+}
+/* 首页功能区域 */
+#funcbox {
+    width: 100vw;
+    color: white;
+    bottom: 2rem;
+    margin-top: 4rem;
+    padding-bottom: 1.45rem;
+    height: 2rem;
+}
+
+/* 开始活动按钮 */
+.button {
+    color: white;
+    font-weight: bold;
+    font-size: 0.38rem;
+    width: 5rem;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+    border-radius: 0.16rem;
+    box-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
+    margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+/* 按钮可用颜色 */
+.color-enable {
+    background: rgb(73, 95, 255);
+}
+
+/* 按钮不可用颜色 */
+.color-disable {
+    background: rgb(136,166,206);
+}
+
+/* 倒计时文字 */
+.timespan {
+    font-weight: normal;
+    font-size: 0.3rem;
+    margin-left: 0.2rem;
+    vertical-align: text-bottom;
+}
+
+/* 倒计时上方的说明文字 */
+#helptext {
+    text-align: left;
+    width: 5rem;
+    margin: 0 auto;
+    padding-left: 0.3rem;
+    padding-bottom: 0.1rem;
+    display: none;
+}
+
+/* 排行榜及活动规则区域 */
+.menutext {
+    font-size: 0.3rem;
+    margin-top: 0.55rem;
+}
+
+.leftmenu {
+    position: absolute;
+    right: 4.2rem;
+}
+
+.rightmenu {
+    position: absolute;
+    left: 4.2rem;
+}
+
+/* 答题顶部区域 */
+#top-area {
+    width: 100vw;
+    height: 2.5rem;
+    text-align: center;
+    display: inline-flex;
+    display: -webkit-inline-flex;
+}
+
+/* 上一题按钮 */
+#prebtn {
+    position: absolute;
+    left: 0;
+    padding-left: 0.40rem;
+    padding-top: 0.45rem;
+    color: #ffffff;
+    font-size:0.32rem;
+}
+/* 下一题按钮 */
+#nextbtn {position: absolute;left: 0;padding-left: 0.40rem;padding-top: 0.45rem;color: #ffffff;font-size: 0.32rem;}
+
+/* 进度条容器 */
+.c-progress {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.6rem;
+    position: relative;
+    display: table;
+}
+/* canvas圆环进度条 */
+#top-circle {
+    position: absolute;
+    left: 0px;
+}
+
+/* 圆环内进度文字 */
+#progress-text {
+    font-size: 0.33rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* 图标：左 */
+.icon-left {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 3.8rem;
+    background-position: -1.3rem -0.18rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 图标：右 */
+.icon-right {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 3.8rem;
+    background-position: -2.1rem -0.18rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 题目文字区域 */
+#question-area {
+    height: auto;
+    text-align: left;
+    overflow: hidden;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    font-size: 0.29rem;
+}
+
+/* 选项文字区域 */
+#mark-area {
+    /* min-height: 5rem; */
+    color: #2E4394;
+    font-size: 0.35rem;
+    margin-top: 0.65rem;
+    height: 100%;
+    /* height: 5rem; */
+}
+
+/* 文字选项 */
+.option {
+    width: 4.2rem;
+    background: white;
+    margin: 0 auto;
+    border-radius: 0.15rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.155rem;
+    padding-bottom: 0.155rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    position: relative;
+}
+
+
+/* 被选中的选项 */
+.option-clicked:before {
+    content: "";
+    width: 0.8rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url("../images/sprite-icon.png") no-repeat 0rem -0.8rem/2.8rem;
+    top: 50%;
+    left: 0;
+    margin-top: -0.25rem;
+}
+
+
+/* 正确的选项 */
+.option-right {
+    background: rgb(73, 95, 255);
+    color: white;
+}
+
+.option-right:after {
+    content: "";
+    width: 0.8rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url("../images/sprite-icon.png") no-repeat -0.7rem -0.8rem/2.8rem;
+    top: 50%;
+    right: 0;
+    margin-top: -0.25rem;
+}
+
+/* 错误的选项 */
+.option-wrong {
+    background: rgb(255, 71, 64);
+    color: white;
+}
+
+.option-wrong:after {
+    content: "";
+    width: 0.8rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url("../images/sprite-icon.png") no-repeat -1.4rem -0.8rem/2.8rem;
+    top: 50%;
+    right: 0;
+    margin-top: -0.25rem;
+}
+
+/* 答题提示区域 */
+/* #tip-area {
+	height: 3.33rem;
+} */
+
+/* 结果页 */
+#result {
+    height: 9.93rem;
+}
+
+/* 结果页顶部 */
+.result-top {
+    height: 2.6rem;
+    position: relative;
+}
+/* 结果区域 */
+#result-area {
+    height: 2.6rem;
+    background: white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.9rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0rem 0.13rem rgba(255,255,255,0.1);
+}
+
+/* 结果页头像*/
+#result-avatar {
+    margin-top: -0.7rem;
+}
+/* 圆形头像 */
+.avatar {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+}
+/* 结果页文字 */
+#result-text {
+    color: #2E4394;
+    position: relative;
+    height: 0.3rem;
+}
+
+/* 结果页得分 */
+#result-text .score{
+    position: absolute;
+    left: 0.5rem;
+}
+
+/* 结果页时间 */
+#result-text .time{
+    /* position: absolute; */
+    position: absolute;
+    right: 0;
+    width: 2.9rem;
+}
+
+/* 时间前置图标 */
+.time:before {
+    content: "";
+    width: 0.8rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url("../images/sprite-icon.png") no-repeat 0rem -1.49rem/2.8rem;
+    top: 50%;
+    left: 0.62rem;
+    margin-top: -0.25rem;
+}
+
+/* 答题情况区域 */
+#result-info {
+    color: #2E4394;
+    padding-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    border-top: #F6F7FE dashed;
+    display: inline-block;
+}
+
+/* 正确题目贴纸 */
+#result-correct {
+    font-size: 0.42rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.05rem;
+    font-weight: bold;
+    color: #FF4740;
+}
+
+.yellow-sticker {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.35rem;
+    background: #F8F8F8;
+    border-top: #FF8801 3px solid;
+    border-bottom-left-radius: 0.12rem;
+    border-bottom-right-radius: 0.12rem;
+    box-shadow: 0px 6px 0px -0.04rem #DDDDDD;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
+/* 错误题目贴纸 */
+#result-incorrect {
+    font-size: 0.42rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.05rem;
+    font-weight: bold;
+    color: #FF4740;
+}
+
+.green-sticker {
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.35rem;
+    background: #F8F8F8;
+    border-top: #15CE84 3px solid;
+    border-bottom-left-radius: 0.12rem;
+    border-bottom-right-radius: 0.12rem;
+    box-shadow: 0px 6px 0px -0.04rem #DDDDDD;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
+/* 排名贴纸 */
+#result-rank {
+    font-size: 0.51rem;
+    margin-top: 0.1rem;
+    margin-bottom: 0.05rem;
+    font-weight: bold;
+    color: #FF4740;
+}
+
+.blue-sticker {
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.6rem;
+    background: #F8F8F8;
+    border-top: rgb(61,147,244) 3px solid;
+    border-bottom-left-radius: 0.12rem;
+    border-bottom-right-radius: 0.12rem;
+    box-shadow: 0px 6px 0px -0.04rem #DDDDDD;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    vertical-align: top;
+}
+
+/* 排行榜 */
+/* #rank {
+    padding-bottom: 0.9rem;
+} */
+
+/* 通用内容区域 */
+.common-area {
+    min-height: 9.8rem;
+    background: white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0rem 0.13rem rgba(255,255,255,0.1);
+}
+
+/* 通用顶部区域 */
+.common-top {
+    height: 1.6rem;
+    position: relative;
+}
+
+/* 通用返回按钮 */
+.back-btn {
+    position: absolute;
+    left: 0.3rem;
+    top: 0.3rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 0.15rem;
+    /* border: 0.04rem rgba(255,255,255,0.8) solid; */
+    background-color: rgba(101,117,220,0.3);
+}
+
+/* 返回图标 */
+.icon-back {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: 0rem 0rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 通用相对盒子 */
+.common-box {
+    position: relative;
+}
+
+/* 通用panel标题 */
+.panel-head {
+    position: absolute;
+    margin-top: -0.35rem;
+    display: inline-block;
+    left: 50%;
+    margin-left: -2rem;
+    width: 4rem;
+    font-size: 0.35rem;
+}
+
+/* 排行榜列表 */
+#ranklist {
+    padding-top: 0.5rem;
+    font-size: 0.3rem;
+}
+
+.rank-li {
+    color: #2E4394;
+    position: relative;
+    width: 6rem;
+    height: 0.86rem;
+    margin: 0 auto;
+    border-bottom: 0.01rem #F3F8FE solid;
+}
+
+/* 排名数字 */
+.rank-li .ranknum {
+    position: absolute;
+    left: 0.2rem;
+    width: 0.4rem;
+    top: 25%;
+}
+
+/* 清除带奖牌的排名的顶部无效top */
+#ranklist .rank-li .cleartop {
+    top: 0%;
+}
+
+/* 排名昵称 */
+.rank-li .nickname{
+    display: table;
+    width: 1.7rem;
+    height: 0.8rem;
+    position: absolute;
+    left: 0.8rem;
+}
+
+/* 公用垂直居中盒子 */
+.vcenterbox {
+    display: table-cell;
+    vertical-align: middle;
+    display: block;
+}
+
+.layercenter {
+    display: none;
+    position: absolute;
+    top: 1.4rem;
+    left: 50%;
+    margin-left: -3.45rem;
+}
+
+/* 排名分数 */
+.rank-li .rankscore {
+    position: absolute;
+    right: 2rem;
+    width: 1.32rem;
+    top: 25%;
+}
+
+/* 排名用时 */
+.rank-li .rankusetime {
+    position: absolute;
+    right: 0rem;
+    width: 1.73rem;
+    top: 25%;
+}
+
+/* 金牌icon */
+.icon-gold {
+    width: 0.35rem;
+    height: 0.75rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -0.85rem -1.32rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 银牌icon */
+.icon-silver {
+    width: 0.35rem;
+    height: 0.75rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -1.55rem -1.32rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 铜牌icon */
+.icon-copper {
+    width: 0.35rem;
+    height: 0.75rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -2.25rem -1.32rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 活动规则 */
+/* #rule {
+    padding-bottom: 0.9rem;
+} */
+
+/* 规则详情 */
+#rule-detail {
+    padding-top: 0.5rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    color: black;
+    text-align: left;
+    overflow: hidden;
+}
+
+/* 用户注册框 */
+#register {
+    z-index: 10000;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.regbox {
+    width: 100vw;
+    text-align: center;
+}
+
+#register .closebtn {
+    position: absolute;
+    right: 0.08rem;
+    top: 0.2rem;
+}
+
+/* 弹框层 */
+.poplayer {
+    display: inline-block;
+    background: white;
+    width: 6.9rem;
+    margin: 0 auto;
+    min-height: 7.35rem;
+    border-radius: 0.18rem;
+    box-shadow: 0 0 0rem 0.12rem rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+
+/* 弹出层遮罩 */
+.layermask {
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* 弹出层头部 */
+.layer-head {
+    text-align: center;
+    height: 2rem;
+    background: url("../images/banner-message.png") center no-repeat;
+    background-size: 100% 100%;
+    display: table;
+    width: 101%;
+    position: relative;
+    margin-bottom: 0.6rem;
+}
+
+/* 弹出层头部文字 */
+.layer-head span{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 0.4rem;
+    font-weight: bold;
+}
+
+/* 弹出层内容 */
+.layer-content {
+    margin-bottom: 1rem;
+    padding-top: 0.2rem;
+}
+
+/* 关闭图标 */
+.icon-close {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url("../images/sprite-icon.png");
+    background-size: 3.3rem;
+    background-position: -1.7rem -0.88rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+/* 用户注册输入框 */
+.common-inputbox {
+    background: #F5F5F5;
+    border: none;
+    padding-left: 0.9rem;
+    padding-right: 0.2rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    border-radius: 0.15rem;
+    width: 4rem;
+    font-size: 0.3rem;
+}
+
+.input-class {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    display: inline-block;
+    padding-left: 0.1rem;
+}
+
+.input-icon:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 0.3rem;
+    width: 1px;
+    top: 0.21rem;
+    background-color: #CCCCCC;
+}
+
+.icon-human {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: 0rem -2.1rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.icon-phone {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -1.4rem -2.1rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.icon-school {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -0.7rem -2.1rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+.icon-normal {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.8rem;
+    background-position: -2.1rem -2.1rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+}
+
+/* 注册确认按钮 */
+#regbtn {
+    margin-top: -0.5rem;
+    position: fixed;
+    left: 50%;
+    margin-left: -2.1rem;
+    width: 4.2rem;
+}
+
+.reg-error {
+    color: rgb(255, 71, 64);
+    font-size: 0.22rem;
+    text-align: left;
+    padding-left: 1rem;
+    margin-top: 0.05rem;
+    margin-bottom: 0.1rem;
+    height: 0.35rem;
+}
+

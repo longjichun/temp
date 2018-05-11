@@ -1,0 +1,426 @@
+.choiceGrade {
+    position: absolute;
+    top: 1.4rem;
+    left: 50%;
+    margin-left: -3.35rem;
+}
+.choiceGrade .poplayer {
+    display: inline-block;
+    background: white;
+    width: 6.7rem;
+    margin: 0 auto;
+    min-height: 4.76rem;
+    border-radius: 0.18rem;
+    box-shadow: 0 0 0rem 0.12rem rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+.choiceGrade_txt {
+    color: #2E4394;
+    font-size: 0.32rem;
+    line-height: 0.32rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    margin: 0 0.6rem 0;
+    padding: 0.38rem 0 0.42rem;
+    border-bottom: 0.04rem dashed #f7f8fe;
+}
+#close-register_chioce .icon-close {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url(../images/sprite-icon.png);
+    background-size: 3.3rem;
+    background-position: -2.55rem -0.88rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.selectGrade{
+    width:5.2rem;
+    margin: 0 auto;
+    padding:0.36rem 0 0 0;
+}
+.selectGrade span{
+    display: inline-block;
+    width: 2.3rem;
+    height:2.3rem;
+    cursor: pointer;
+}
+.selectGrade span:first-child{
+    float: left;
+}
+.selectGrade span:last-child{
+    float: right;
+}
+.selectGrade span img{
+    /* background: #9A9A9A; */
+    width:100%;
+    height:100%;
+}
+.common-top {
+    height: 3.16rem;
+    position: relative;
+    background-image: url(../images/page-title@2x.png);
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 100% auto;
+}
+.common-box{
+    padding-bottom: 0.8rem;
+}
+#rank,#rule{
+    padding-bottom: 1rem;
+}
+#rule-detail img{
+    width: 100%;
+    height:auto;
+}
+#timerbtn{
+
+    position: absolute;
+
+    right: 0;
+
+    padding-right: 0.40rem;
+
+    padding-top: 0.45rem;
+
+    color: #ffffff;
+
+    font-size: 0.32rem;
+}
+.time:before {
+    content: "";
+    width: 0.8rem;
+    height: 0.5rem;
+    position: absolute;
+    background: url(../images/sprite-icon.png) no-repeat 0rem -1.49rem/2.8rem;
+    top: 50%;
+    left: 1.2rem;
+    margin-top: -0.25rem;
+}
+#result-text .time {
+    /* position: absolute; */
+    position: absolute;
+    right: 0;
+    width: 2.9rem;
+    text-align: right;
+    padding: 0 0.55rem 0 0;
+}
+#result-area {
+    height: 3.77rem;
+    background: white;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 0.9rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0rem 0.13rem rgba(255,255,255,0.1);
+}
+#result-text {
+    color: #2E4394;
+    position: relative;
+    height: 0.3rem;
+    font-size: 0.28rem;
+    padding-bottom: 0.3rem;
+}
+#result-info {
+    font-size: 0.24rem;
+    color: #2E4394;
+    padding-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    border-top: #F6F7FE dashed;
+    display: inline-block;
+}
+.avatar {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+}
+#result .color-enable {
+    width: 6rem;
+    background-color: #88A6CE;
+}
+.share-btn .icon-back {
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url(../images/sprite-icon@2x.png);
+    background-size: 4.54rem;
+    background-position: -1.95rem 0rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+#register {
+    z-index: 10000;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+}
+.c-progress {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.55rem;
+    position: relative;
+    display: table;
+}
+.c-progress img{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.result-top {
+    height: 3.16rem;
+    position: relative;
+    background-image: url(../images/page-title@2x.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+}
+.blue-sticker {
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.6rem;
+    background: #F8F8F8;
+    border-top: rgb(61,147,244) 3px solid;
+    border-bottom-left-radius: 0.12rem;
+    border-bottom-right-radius: 0.12rem;
+    box-shadow: 0px 6px 0px -0.04rem #DDDDDD;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+    vertical-align: top;
+}
+#ranklist {
+    padding-top: 0.5rem;
+    font-size: 0.28rem;
+    color: #2E4394;
+}
+.rankTop{
+    color: #ff4740;
+}
+.rankTop .pnumbox{
+    color: #fba399;
+}
+.vcenterbox {
+    display: table-cell;
+    vertical-align: middle;
+    display: block;
+    line-height: 0.28rem;
+    padding-top: 0.17rem;
+}
+.scoreF{
+    font-size: 0.2rem;
+}
+.pnumbox{
+    color: #88a6ce;
+    font-size: 0.2rem;
+}
+.share {
+    display: none;
+    z-index: 10001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: initial;
+    background-color: rgba(0,0,0,.65);
+}
+.login {
+    display: none;
+    z-index: 10001;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: initial;
+    background-color: rgba(0,0,0,.65);
+    text-align: center;
+}
+.share>div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+.share>div>ul>li {
+    float: left;
+    width: 23%;
+    text-align: center;
+}
+.share>div>ul>li>img {
+    width: 50%;
+    margin-top: 25%;
+}
+.share>div>ul>li>span {
+    display: inline-block;
+    padding-top: 3%;
+    margin-bottom: 25%;
+    color: #000000;
+    font-size: 0.3rem;
+}
+.share>div>div {
+    clear: both;
+    display: block;
+    padding: 3% 0;
+    color: #000000;
+    font-size: 0.425rem;
+    border-top: #CCCCCC 1px solid;
+}
+#register .closebtn {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.2rem;
+}
+
+.input-icon {
+    position: absolute;
+    display: inline-block;
+    padding-left: 0.1rem;
+    height: 100%;
+}
+.input-icon:after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    height: 0.3rem;
+    width: 1px;
+    top: 50%;
+    background-color: #CCCCCC;
+    margin-top: -0.15rem;
+}
+.icon-human {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.5rem;
+    background-position: 0.0rem -2rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.36rem;
+    height: 0.36rem;
+    top: 50%;
+    margin-top: -0.18rem;
+}
+.icon-school {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.5rem;
+    background-position: -0.65rem -2rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.36rem;
+    height: 0.36rem;
+    top: 50%;
+    margin-top: -0.18rem;
+}
+.icon-normal {
+    background-image: url("../images/sprite-icon.png");
+    background-size: 2.5rem;
+    background-position: -1.89rem -2rem;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.36rem;
+    height: 0.36rem;
+    top: 50%;
+    margin-top: -0.18rem;
+}
+.login .content {
+    position: absolute;
+    top: 22%;
+    z-index: 1;
+    width: 7rem;
+    left: 50%;
+    margin-left: -3.5rem;
+    height: 6.0rem;
+    background: url(../images/bg_user.png) no-repeat;
+    background-size: 100% auto;
+}
+.login .content a.close {
+    position: absolute;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-image: url(../images/icon_close.png);
+    background-size: 100% 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.login   .content p {
+    margin-top: 3.25rem;
+    font-size: 0.36rem;
+    text-align: center;
+    color: #545454;
+}
+.login .content .loginbtn {
+    margin-top: 0.9rem;
+    width: 6rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-size: 0.36rem;
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
+    background: linear-gradient(to right, #d72007 0% , #ff0041 90%, #ff4000);
+    border-radius: 0.04rem;
+    border: 0.01rem solid #d72007;
+}
+.choiceGrade {
+    z-index: 10000;
+    position: fixed;
+    overflow-y: scroll;
+    height: 100%;
+
+}
+.choiceGrade .closebtn {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.2rem;
+}
+.choic_box {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.5);
+}
+.choiceRank{
+    position: absolute;
+    top: -0.4rem;
+    left:50%;
+    margin-left: -2rem;
+    width: 4rem;
+    height: 0.8rem;
+    color: #2E4394;
+    font-size: 0.32rem;
+    line-height: 0.8rem;
+    border-radius: 0.15rem;
+    background: #ffffff;
+    box-shadow: 0px 0.04rem 0.06rem 0px rgba(0,0,0,0.1);
+}
+.choiceRank span:first-child{
+    float: left;
+    width: 50%;
+    height:100%;
+    border-radius: 0.15rem 0rem 0 0.15rem;
+}
+.choiceRank span:last-child{
+    float: right;
+    width: 50%;
+    height:100%;
+    border-radius: 0 0.15rem 0.15rem 0;
+}
+.choiceRank .selRank{
+    color: #ffffff;
+    background: #495FFF;
+}
+#core{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+#question-area{
+    text-align: justify;
+    word-break: normal;
+}
+.rank-li .ranknum {
+    width: 0.5rem;
+}
