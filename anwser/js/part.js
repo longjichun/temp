@@ -1,6 +1,8 @@
 var BASEURL = 'http://test.app.onlyred.net/';
 var bathpath = 'rednetMoment-http/rednetApi.opx?param='
-
+window.onerror = function(err){
+//  alert(err)
+}
 var anwserGapTime = 500;
 
 var activId = 19
@@ -126,7 +128,8 @@ function router() {
     })
 
     $(".btn-reanwser").click(function(){
-        runAnwser()
+        clearT();
+    runAnwser();
         $("section").hide()
         $("#sec3").show()
         totalTime()
@@ -295,18 +298,30 @@ $("#startAnser").on("click",function(){
     runAnwser()
 });
 
+var runningTime;
+var runningTime0;
+function clearT(){
+    clearTimeout(runningTime)
+    clearTimeout(runningTime0)
+    runningTime = null;
+    runningTime0 = null;
+}
+
 var usedTime = 0;
 var runningTime = null;
-
+var anwsered = false;
 function totalTime() {
+    var anwsered = false;
     usedTime = 0;
-    clearTimeout(runningTime)
+    clearT()
     $(".header-time span").eq(0).html('00:00:00')
-    setTimeout(function repeat() {
+    runningTime0 = setTimeout(function repeat() {
         var str = formatTime(usedTime++)
         $(".header-time span").eq(0).html(str)
-        if(true) {
+        if(!anwsered) {
             runningTime = setTimeout(repeat,1000)
+        } else {
+        clearT()
         }
     },1000)
 }
@@ -365,6 +380,7 @@ function renderQues(){
     $(".choice ul").html(choiceStr);
     nextClicked = false;
     $("#sec3 .current").text( fillNum(currentQuesInd+1) );
+    $(".btn-next").hide()
     anwserEventBind()
 }
 
@@ -421,8 +437,7 @@ function anwserEventBind(arr) {
                     
                 } else {
                     renderQues();
-                }
-
+        }
             }, anwserGapTime)
         })
         
@@ -452,6 +467,8 @@ function examAnwser(corretAnwser) {
 /* 答题部分 */
 var resultId;
 function personOut(){
+    anwsered = true;
+    clearT()
     // 个人成绩
     var name = '';
     var count = '';
@@ -489,11 +506,23 @@ function personOut(){
 */
 (function(){
     $(".sharelink").click(function(){
-        $(".share").show()
+        $(".share").show();
+        fxclick();
     })
     shareLink()
+
+    function fxclick () {
+        if (!IsPC()) {
+            if (appVersion("1.4")) {
+                $(".share").show();
+                shareFlag = false;
+            } else if ((ostype == "ios") && (infofrom == "appnews")) {
+                //$(".mask, .failure_share").show();
+            }
+        }
+    }
+    shareLink()
     function shareLink() {
-        var shareLink = 
         $(".share img, .share span").click(function() {
             var index = $(this).parent().index(), name = null;
             switch (index) {
@@ -515,17 +544,19 @@ function personOut(){
             }
             if (name) {
                 if (ostype == "android") {
-                    if(shareFlag)
+                    if(shareFlag) {
                         jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId+ '&achvId=' + achvId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
+                    }
                     else{
                         jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
                     }
 
                 } else if (ostype == "ios") {
-                    if(shareFlag)
-                        jsBridge.postNotification(name, {activity_id: '19', title: '学习防空防灾知识,掌握防护生存技能', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId + '&achvId=' + achvId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
+                    if(shareFlag){
+                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId + '&achvId=' + achvId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
+                    }
                     else{
-                        jsBridge.postNotification(name, {activity_id: '19', title: '学习防空防灾知识,掌握防护生存技能', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
+                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
                     }
 
                 }

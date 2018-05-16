@@ -197,6 +197,8 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	height: 100%;
 	outline: none;
 	font-size: 0.3rem;
+	appearance:none;
+	-webkit-appearance:none;
 }
 .forminfo .ipt select{
 	color: #ccc;
@@ -607,7 +609,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
     border-top: #CCCCCC 1px solid;
 }
 
-.sharelink{
+.sharelink, .back{
 	position: fixed;
 	right: 0.5rem;
 	top:0.5rem;
@@ -619,21 +621,15 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 }
 .sharebg{
 	height: 0.5rem;
-	background-position: -6.9em -0.1rem;
+	background-position: -2.2rem -0.1rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.back{
+	left: 0.5rem;
+	right: auto;
+}
+.back .sharebg{
+	height: 0.5rem;
+	background-position: -0.1rem -0.1rem;
+}
 
 
