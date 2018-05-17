@@ -1,4 +1,5 @@
 var BASEURL = 'http://test.app.onlyred.net/';
+BASEURL = 'https://fuwu.rednet.cn/'
 var bathpath = 'rednetMoment-http/rednetApi.opx?param='
 window.onerror = function(err){
 //  alert(err)
