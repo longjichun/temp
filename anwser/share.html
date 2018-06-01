@@ -38,7 +38,7 @@
         <div class="grade" style="margin-bottom: 0rem;">
             <div class="bg" style="padding-bottom: 0;"> 
                 <div class="header ov">
-                    <div class="fl name">
+                    <div class="fl name username">
                         <span>姓名:</span>
                         <i></i>
                     </div>
@@ -76,14 +76,19 @@
                 </div>
             </div>
         </div>
-        <img width='100%' src="//imgapp.rednet.cn/images/page-rule.png" alt="">
+        <img width='100%' src="./images/page-rule.png" alt="">
         <div class="gap80"></div>
     </div>
     <div class="gap80"></div>
 </section>
 <script>
-    var resultId = localStorage.getItem("resultId");
-    var url='http://test.app.onlyred.net'+ '/rednetMoment-http/rednetApi.opx?param=';
+    var paramReid = location.search.match(/resultId=(\w+)/)
+    var resultId = paramReid && paramReid[1] || localStorage.getItem("resultId");
+    var paramUsnm = location.search.match(/username=([^&]+)/);
+    var username = paramUsnm && paramUsnm[1] && decodeURI(paramUsnm[1]) || localStorage.getItem("username");
+
+    $(".username i").html(username)
+    var url='https://fuwu.rednet.cn/'+ '/rednetMoment-http/rednetApi.opx?param=';
 
     var UUID = uuid;
     var USERID = userid;

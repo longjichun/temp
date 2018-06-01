@@ -1,3 +1,11 @@
+function alert(str){
+    $(".alertinfo span").html(str)
+    $(".alert-mask").show()
+    $(".alertsure").off("click").on("click",function(){
+        $(".alert-mask").hide()
+    })
+}
+
 var userid = getUrlParam("userid"),achvId = getUrlParam("achvId"), ostype = getUrlParam("ostype"), appversion = getUrlParam("appversion"), uuid = getUrlParam("uuid"), isApp = true, isOld = false;
 if (ostype == "ios") {
     var fileref = document.createElement('script');

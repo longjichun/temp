@@ -14,9 +14,8 @@
 		body{
 			width: 100%;
 			height: 100%;
-			overflow: hidden;
 			position: relative;
-			background-image: url(//imgapp.rednet.cn/images/pcbg/pc-background@2x.jpg);
+			background-image: url(./images/pcbg/pc-background@2x.jpg);
 			background-repeat: no-repeat;
 			background-position: top center;
 			/*overflow: hidden;*/
@@ -31,7 +30,7 @@
 		}
 		.rap{
 			min-width: 1200px;
-			background-image: url(//imgapp.rednet.cn/images/pcbg/pc-phone@2x.png);
+			background-image: url(./images/pcbg/pc-phone@2x.png);
 			background-repeat: no-repeat;
 			background-position: center top;
 			padding-top: 50px;
@@ -58,11 +57,52 @@
 			top:0;
 			width: 520px;
 		}
+		.text{
+			width: 306px;
+			font-size: 16px;
+			color: #444;
+			line-height: 24px;
+			position: absolute;
+			top:0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin-left: 73%;
+			margin-top: 171px;
+		}
+		h3{
+			font-size: 16px;
+			color: #c50012;
+			margin-bottom: 10px;
+		}
+		.part{
+			margin-top: 20px;
+		}
 	</style>
 </head>
 <body>
+	<div class="alert-mask">
+		<div class="alertinfo"></div>
+	</div>
+
 	<div class="rap" id="rap">
-			<iframe frameborder="0" id="ifm"></iframe></div>
+
+		<div class="text">
+			<div class="interduce">活动介绍</div>
+			<h3>活动时间：2018年5月20日—7月20日</h3>
+			<p>为深入学习贯彻党的十九大精神，全面落实全国和全省“七五”普法规划，加强党内法规的学习宣传，进一步提高全省党员的规矩意识、纪律意识，以党员的先锋模范作用，引导全社会自觉学法尊法守法用法，根据年度工作安排，经省委组织部、省委宣传部、省委法治办、省司法厅研究决定，今年5-6月在全省联合开展党内法规学习竞赛活动。</p>
+			<h3 class="part">
+				主办单位：
+			</h3>
+			<p>
+				中共湖南省委组织部<br>
+				中共湖南省委宣传部       <br>
+				中共湖南省委法治湖南建设领导小组办公室<br>
+				湖南省司法厅<br> 
+			</p>	
+		</div>
+		<iframe frameborder="0" id="ifm"></iframe>
+	</div>
 	<script>
 		var r = parseInt( Math.random()*100000000 )
 		var cookieStr = document.cookie;
@@ -70,10 +110,14 @@
 		if( userid && userid[1]){
 			r = userid[1];
 		} else {
-			document.cookie = "userid="+r+"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+			// document.cookie = "userid="+r+"; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 		}
 		var ifm = document.getElementById("ifm")
-		ifm.setAttribute("src",'./pcinner.html?userid='+r)
+		var src= './pcinner.html?userid='+r;
+		if(location.hash == '#rank') {
+			src = './rank.html'
+		}
+		ifm.setAttribute("src",src)
 	</script>
 </body>
 </html>

@@ -11,8 +11,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="icon" href="" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/partpc.css?time=20180401" />
+    <script type="text/javascript" src="js/html5.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/commonpc.js"></script>
     <style>
         p{
@@ -71,7 +71,7 @@
 <body>
 <div class="back" onclick="history.go(-1)" ><div class="spritIcon sharebg"></div></div>
 <section id="sec5">
-    <img src="//imgapp.rednet.cn/images/pcbg/page-title@2x.png" style="width:100%" alt="">
+    <img src="./images/pcbg/page-title@2x.png" style="width:100%" alt="">
     <div class="ranklist" id="ranklist">
         <div class="header">
             <span class="t1">名次</span>
@@ -124,16 +124,31 @@
         if(!arr.length) {
             $(".ranklist p").show()
         }
-        var temp = ['<li class="','','">','<i>','','</i>','<span class="c1">',  ''  ,'</span><span class="c2">','','分</span><span class="per-time c3">','','</span></li>']
         var str = ''
-        for(var i = 0,len = arr.length;i<len;i++ ) {
-            var val = arr[i]
+
+        var remain = []
+        arr.sort(function(x,y){
+            return y.scoreCount - x.scoreCount 
+        });
+        var mobs = []
+        for(var j=0;j<arr.length;j++) {
+            var temp = arr[j];
+            if( !~mobs.indexOf(temp.mobile) ) {
+                mobs.push(temp.mobile)
+                remain.push(temp)
+            }
+        }
+
+        for(var i = 0,len = remain.length;i<len;i++ ) {
+            var temp = ['<li class="','','">','<i>','','</i>','<span class="c1">',  ''  ,'</span><span class="c2">','','分</span><span class="per-time c3">','','</span></li>']
+            var val = remain[i]
             if(i<3) {
                 temp[1] = 'forward'
                 temp[4] = ''
             } else {
                 temp[4] = i+1;
             }
+            console.log(temp[1])
             temp[7] = val.userName
             temp[9] = val.scoreCount
             temp[11] = formatDuring(val.utilityTime*1000)

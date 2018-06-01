@@ -21,7 +21,7 @@ function needLogin() {
     } else {
 
     }
-}
+}   
 
 if(userid == '-1') {
     needLogin()
@@ -192,7 +192,7 @@ function strTojson(str) {
     /* 表单信息*/
     var arr = [ 
                 {"child":["请选择所在的区域"]},
-                {"child":["芙蓉区","天心区","岳麓区","开福区","雨花区","长沙县","望城区","宁乡市","浏阳市","长沙县网上群众工作部"],"royal":"长沙"},
+                {"child":["芙蓉区","天心区","岳麓区","开福区","雨花区","长沙县","望城区","宁乡市","浏阳市"],"royal":"长沙"},
                 {"child":["荷塘区","芦淞区","石峰区","天元区","株洲县","攸县","茶陵县","炎陵县","醴陵市","云龙区"],"royal":"株洲"},
                 {"child":["雨湖区","岳塘区","湘潭县","湘乡市","韶山市","昭山示范区"],"royal":"湘潭"},
                 {"child":["雁峰区","珠晖区","蒸湘区","南岳区","石鼓区","衡阳县","衡南县","衡山县","衡东县","祁东县","耒阳市","常宁市"],"royal":"衡阳"},
@@ -372,12 +372,13 @@ function renderQues(){
     $(".question span").eq(0).html( item.btTitle )
     var tempStr = '<li class="" btXx={{}}><i class="spritIcon"></i><span>{{}}</span><b class="spritIcon"></b></li>'
     var choiceStr = ''
-    item.answerItems.forEach(function(item){
-        var temp = [item.btXx, item.btItem]
+    for(var i = 0; i < item.answerItems.length; i++ ) {
+        var secItem = item.answerItems[i];
+        var temp = [secItem.btXx, secItem.btItem]
         choiceStr = choiceStr + tempStr.replace(/\{\{\}\}/g,function(){
             return temp.shift()
         })
-    });
+    } 
     $(".choice ul").html(choiceStr);
     nextClicked = false;
     $("#sec3 .current").text( fillNum(currentQuesInd+1) );
@@ -438,8 +439,10 @@ function anwserEventBind(arr) {
                     
                 } else {
                     renderQues();
-        }
+                }
             }, anwserGapTime)
+        },function(res){
+            nextClicked = false;
         })
         
     })
@@ -467,11 +470,11 @@ function examAnwser(corretAnwser) {
 
 /* 答题部分 */
 var resultId;
+var username = '';
 function personOut(){
     anwsered = true;
     clearT()
     // 个人成绩
-    var name = '';
     var count = '';
     var rank = '';
     var rate = '';
@@ -484,12 +487,15 @@ function personOut(){
             rank = res.rank;
             used = formatTime(+res.utilityTime);
             count = res.scoreCount;
-            rate = res.correctCount / (res.correctCount + res.errorCount) ;
+            rate =  res.correctCount / (res.correctCount + res.errorCount) 
             rate.toFixed(2)
-            name = res.userName;
+            rate = rate*100+"%" ;
+            username = res.userName;
             localStorage.setItem("resultId",res.id)
             resultId = res.id;
-            $(".grade .name i").html(name)
+            $(".grade .name i").html(username)
+            localStorage.setItem('username',username)
+
             $(".used-time span").html(used)
             $(".result .count .num").html(count)
             $(".rank .num").html(rank)
@@ -546,18 +552,18 @@ function personOut(){
             if (name) {
                 if (ostype == "android") {
                     if(shareFlag) {
-                        jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId+ '&achvId=' + achvId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
+                        jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&username='+username + '&resultId='+resultId+ '&achvId=' + achvId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
                     }
                     else{
-                        jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
+                        jsBridge.postNotification(name, '{"activity_id": "19", "title": "学习党内法规,提高规矩意识、纪律意识", "link": "//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&username='+username + '&resultId='+resultId +'&ostype=' + ostype + '", "desc": "湖南省党内法规学习竞赛活动。", "img_url": "//moment.rednet.cn/activity/anwser/images/logo@2x.png", "phoneNum": "", "is_update": "0"}');
                     }
 
                 } else if (ostype == "ios") {
                     if(shareFlag){
-                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId + '&achvId=' + achvId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
+                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&username='+username + '&resultId='+resultId + '&achvId=' + achvId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
                     }
                     else{
-                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&resultId'+resultId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
+                        jsBridge.postNotification(name, {activity_id: '19', title: '学习党内法规,提高规矩意识、纪律意识', link: '//moment.rednet.cn/activity/anwser/share.html?userid=' + userid + '&username='+username + '&resultId='+resultId +'&ostype=' + ostype, desc: '湖南省党内法规学习竞赛活动。', img_url: '//moment.rednet.cn/activity/anwser/images/logo@2x.png', phoneNum: '', is_update: '0'});
                     }
 
                 }

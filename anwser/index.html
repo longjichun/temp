@@ -17,13 +17,58 @@
     <!--<script type="text/javascript" src="js/js.cookie-2.2.0.min.js"></script>-->
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/js4ios.min.js"></script>
+    <style>
+        html{
+            border-radius: 5px;
+        }
+        .content-wrap2{
+            margin-top: 4rem;
+        }
+        .alertinfo{
+            padding-top: 1.3rem;
+            padding-bottom: 1.3rem;
+        }
+        .alert-mask{
+            z-index: 1000;
+            position: absolute;
+            display: none;
+            left:0;
+            bottom:0;
+            right:0;
+            top:0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .btn-alertsure{
+            font-weight: bold;
+            color: #fff;
+            font-size: 105%;
+            text-align: center;
+            border-radius: 6px;
+            margin: auto;
+            background-color: #ffc017;
+            line-height: 0.8rem;
+            height: 0.8rem;
+            width: 5rem;
+            margin-top: -0.4rem;
+        }
+    </style>
+<link rel="stylesheet" type="text/css" href="css/hook.css" />
 
 </head>
 <body>
 <!-- 强制关注公众号 -->
 <!-- Skin hook模块 -->
-<link rel="stylesheet" type="text/css" href="css/hook.css" />
-<section id="sec1" class="">
+<div class="alert-mask">
+    <div class="grade content-wrap2" style="margin-bottom: 0rem;">
+        <div class="bg alertinfo" style="text-align: center;"> 
+            <span></span>
+        </div>
+    </div>
+    <div class="btn-alertsure alertsure">
+        确认
+    </div>
+</div> 
+<section id="sec1" class="hid">
     <div class="operation">
         <a id="startAnser" class="sure" href="javascript:void(0)">开始答题</a>
         <div class="links">
@@ -105,10 +150,11 @@
     <a href="javascript:void(0);" id="fillMyInfo" class="sure">确认</a>
 
 </section>
-<section id="sec3" class="ques-anw ov hide">
+<section id="sec3" class="ques-anw hide">
     <div class="header-time ov">
         <span>00:00:00</span>
     </div>
+    <div style="clear: both;"></div>
     <div class="question">
         <p class="mult"><i></i><span></span></p>
     </div>
@@ -118,9 +164,10 @@
 <!--             <li class="choosed right-anwser"><i class="spritIcon"></i><span>选择了一个正确的</span><b class="spritIcon"></b></li>
             <li class="choosed cho-error"><i  class="spritIcon"></i><span>选择了一个错误的</span><b class="spritIcon"></b></li>
             <li class="right-anwser"><i class="spritIcon"></i><span></span><b class="spritIcon"></b></li>
-            <li><i class="spritIcon"></i><span>没有选择错误的</span><b class="spritIcon"></b></li> -->
+            <li><i class="spritIcon"></i><span>没有选择错的没有选择错误的没</span><b class="spritIcon"></b></li> -->
         </ul>
     </div>
+    <div class="gap80"></div>
     <div class="next-que">
         <div class="items">
             <i class="spritIcon tran">trl</i>
@@ -215,7 +262,8 @@
         $.each($(".link"),function(item){
             var old = $(this).attr("href")
             $(this).attr("href",old+location.search);
-        })
+        });
+
     }());
 </script>
 <script src="js/part.js" type="text/javascript"></script>

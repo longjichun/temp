@@ -16,18 +16,58 @@
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <!--<script type="text/javascript" src="js/js.cookie-2.2.0.min.js"></script>-->
     <script type="text/javascript" src="js/commonpc.js"></script>
-    <script type="text/javascript" src="js/js4ios.min.js"></script>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <!-- <script type="text/javascript" src="js/js4ios.min.js"></script> -->
     <style>
         html{
-            overflow: hidden;
             border-radius: 5px;
         }
+        .alert-mask{
+            z-index: 1000;
+            position: absolute;
+            left:0;
+            bottom:0;
+            right:0;
+            top:0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .alertinfo{
+            width: 80%;
+            top:100px;
+            height: 32px;
+            padding-top: 80px;
+            padding-bottom: 100px;
+            padding-left: 20px;
+            padding-right: 20px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            margin:auto;
+            background: #fff;
+        }
+        .alertinfo{
+            text-align: center;
+            border-radius: 12px;
+        }
+        .alertsure{
+            margin-top: 290px;
+            position: relative;
+            z-index: 100000;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
 <!-- 强制关注公众号 -->
 <!-- Skin hook模块 -->
 <link rel="stylesheet" type="text/css" href="css/hook.css" />
+<div class="alert-mask" style="display: none;">
+    <div class="alertinfo alertsure">
+        <span></span>
+    </div>
+    <div class="sure alertsure" style="width: 300px">确认</div>
+</div>
 <section id="sec1" class="hid">
     <div class="operation">
         <a id="startAnser" class="sure" href="javascript:void(0)">开始答题</a>
@@ -103,10 +143,11 @@
     </div>
     <a href="javascript:void(0);" id="fillMyInfo" class="sure surebtn">确认</a>
 </section>
-<section id="sec3" class="ques-anw ov hide">
+<section id="sec3" class="ques-anw hide">
     <div class="header-time ov">
         <span>00:00:00</span>
     </div>
+    <div class="clear" style="clear:both"></div>
     <div class="question">
         <p class="mult"><i>0000</i><span >加强和规范党内政治生活是中央委员、高级干部们的任务。（ ）</span></p>
     </div>
@@ -119,6 +160,7 @@
             <li><i class="spritIcon"></i><span>没有选择错误的</span><b class="spritIcon"></b></li>
         </ul>
     </div>
+    <div class="gap80"></div>
     <div class="next-que">
         <div class="items">
             <i class="spritIcon tran">trl</i>
@@ -130,7 +172,7 @@
     </div>
 </section>
 <section id="sec4" class="hide">
-    <img src="//imgapp.rednet.cn/images/pcbg/page-title@2x.png" style="width:100%" alt="">
+    <img src="./images/pcbg/page-title@2x.png" style="width:100%" alt="">
     <!-- <div class="sharelink"><div class="spritIcon sharebg"></div></div> -->
     <div class="grade content-wrap" style="margin-bottom: 0rem;">
         <div class="bg"> 

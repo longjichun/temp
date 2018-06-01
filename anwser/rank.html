@@ -12,7 +12,6 @@
     <link rel="icon" href="" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/part.css?time=20180401" />
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <style>
         p{
@@ -80,7 +79,7 @@
 </section>
 <script>
     var url='https://fuwu.rednet.cn'+ '/rednetMoment-http/rednetApi.opx?param=';
-    var showListNum = 10;
+    var showListNum = 200;
     var UUID = uuid;
     var USERID = userid;
     var param={
@@ -118,10 +117,25 @@
         if(!arr.length) {
             $(".ranklist p").show()
         }
-        var temp = ['<li class="','','">','<i>','','</i>','<span>',  ''  ,'</span><span>','','分</span><span class="per-time">','','</span></li>']
         var str = ''
-        for(var i = 0,len = arr.length;i<len;i++ ) {
-            var val = arr[i]
+
+        var remain = []
+        arr.sort(function(x,y){
+            return y.scoreCount - x.scoreCount  || y.utilityTime - x.utilityTime
+        });
+        var mobs = []
+        for(var j=0;j<arr.length;j++) {
+            var temp = arr[j];
+            if( !~mobs.indexOf(temp.mobile) ) {
+                mobs.push(temp.mobile)
+                remain.push(temp)
+            }
+        }
+
+        for(var i = 0,len = remain.length;i<100;i++ ) {
+            var temp = ['<li class="','','">','<i>','','</i>','<span>',  ''  ,'</span><span>','','分</span><span class="per-time">','','</span></li>']
+            var val = remain[i]
+            if(!val) break;
             if(i<3) {
                 temp[1] = 'forward'
                 temp[4] = ''
@@ -133,6 +147,9 @@
             temp[11] = formatDuring(val.utilityTime*1000)
             str = str + temp.join("")
         }
+
+
+        
         str = str.replace(/<i><\/i>/g,'<i class="spritIcon"></i>')
         $(".ranklist ul").html(str)
     }

@@ -16,7 +16,7 @@ html,body{
 	font-family: Arial;
 	height: 100%;
 	background-color: #c32229;
-	background-image: url('//imgapp.rednet.cn/images/pcbg/background-top@2x.png');
+	background-image: url('../images/pcbg/background-top@2x.png');
 	background-repeat: no-repeat;
 }
 section{
@@ -26,7 +26,7 @@ section{
 
 }
 .spritIcon{
-	background-image: url(//imgapp.rednet.cn/images/pcbg/sprite-icon@2x.png);
+	background-image: url(../images/pcbg/sprite-icon@2x.png);
     background-repeat: no-repeat;
     background-position: 2rem;
 }
@@ -66,14 +66,14 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	border-top-width: 8px;	
 }
 .gap80{
-	height: 0.8rem;
+	height: 40px;
 }
 .hide{
 	display: none;
 }
 #sec1{
 	/*display: none;*/
-	background-image:  url('//imgapp.rednet.cn/images/pcbg/background-cover@2x.png');	
+	background-image:  url('../images/pcbg/background-cover@2x.png');	
 	background-repeat: no-repeat;
 	position: relative;
 }
@@ -149,7 +149,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 }
 .content .header{
-	background-image: url('//imgapp.rednet.cn/images/pcbg/banner-message.png');
+	background-image: url('../images/pcbg/banner-message.png');
 	background-repeat: no-repeat;
 	border-radius: 6px 6px 0 0;
 	height: 133px;
@@ -222,7 +222,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 
 
 .ques-anw{
-	background: url(//imgapp.rednet.cn/images/pcbg/logo@2x.png) center 30px no-repeat;
+	background: url(../images/pcbg/logo@2x.png) center 30px no-repeat;
 }
 .header-time {
 	background: rgba(255,255,255,0.1);
@@ -235,7 +235,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	color: #fff;
 }
 .question {
-	margin-top: 130px;
+	margin-top: 90px;
 	margin-bottom: 35px;
 }
 .question p{
@@ -360,7 +360,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 .question i{
 	width: 30px;
 	height: 30px;
-	background-image: url(//imgapp.rednet.cn/images/pcbg/sprite-icon@2x.png);
+	background-image: url(../images/pcbg/sprite-icon@2x.png);
     background-repeat: no-repeat;
     background-position: -1.676rem -0.225rem;
 	/*margin-right: 1rem;*/
@@ -398,7 +398,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	width: 0.3rem;
 	height: 0.3rem;
 	display: inline-block;
-	background-image: url(//imgapp.rednet.cn/images/pcbg/sprite-icon@2x.png);
+	background-image: url(../images/pcbg/sprite-icon@2x.png);
     background-repeat: no-repeat;
     background-position: -0.22rem -1.63rem;
 	vertical-align: middle;
@@ -418,7 +418,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	height: 70px;
 	/*height: 1.01rem;*/
 	margin: auto;	
-	background-image: url(//imgapp.rednet.cn/images/pcbg/result-background-s@2x.png);
+	background-image: url(../images/pcbg/result-background-s@2x.png);
 	background-repeat: no-repeat;
 	background-position: center;
 /*	padding-left: 4px;
@@ -457,7 +457,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	border-top: rgb(61,147,244) 2px solid;
 	padding-left: 4px;
 	padding-right: 4px;
-	background-image: url(//imgapp.rednet.cn/images/pcbg/result-background-l@2x.png);
+	background-image: url(../images/pcbg/result-background-l@2x.png);
 	background-repeat: no-repeat;
 	background-position: center 0rem;
 	width: 85px;
@@ -480,7 +480,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 /*排名*/
 
 #sec5,.allbg{
-	background-image: url(//imgapp.rednet.cn/images/pcbg/page-title@2x.png);
+	background-image: url(../images/pcbg/page-title@2x.png);
 	background-repeat: no-repeat;	
 	background-position: 0rem 0rem;
 	padding-top:3.23rem;
@@ -590,7 +590,7 @@ input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
 	width: 45px;
 	height: 45px;
 	border-radius: 4px;
-	background-color: rgba(255,255,255,0.2);
+	background-color: rgba(0,0,0,0.2);
 	cursor: pointer;
 }
 .sharebg{
