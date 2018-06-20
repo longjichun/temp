@@ -1,36 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="yes" name="apple-mobile-web-app-capable">
-        <meta content="yes" name="apple-touch-fullscreen">
-        <meta content="telephone=no,email=no" name="format-detection">
-        <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
-        <link rel="apple-touch-icon" href="favicon.png">
-        <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
-        <title>再来一波</title>
-        <style>
-            *{
-                margin:0;
-                padding: 0;
-            }
-            html,body{
-                font-size: 75px;
-            }
-            section{
-                height: 1.2rem;
-                background: #f90;
-                font-size: 0.42rem;
-                line-height: 1.2rem;
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="wrap">
-            <section>
-                下一题
-            </section>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>芷兰-内设机构</title>
+    <link rel="stylesheet" href="dist/index.css">
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        ul, li {
+          list-style: none;
+        }
+
+        .fl {
+          float: left;
+        }
+
+        .fr {
+          float: right;
+        }
+
+        .left-fixed-p {
+          display: flex;
+          display: -webkit-flex;
+        }
+        .left-fixed-p .fixed {
+          flex: 1;
+        }
+
+        .header {
+          height: 1.6533333333rem;
+          background: url(../asset/images/logo_zhilan@2x.png) center center no-repeat;
+        }
+
+        .org-list-wrap {
+          padding-left: 0.56rem;
+          padding-right: 0.56rem;
+          overflow: hidden;
+        }
+        .org-list-wrap li {
+          border-radius: 0.2666666667rem;
+          width: 4.2666666667rem;
+          height: 1.8133333333rem;
+          margin-bottom: 0.4rem;
+          background: #f8f8f8;
+          padding-left: 0.2666666667rem;
+          padding-right: 0.2666666667rem;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          display: -webkit-flex;
+          display: flex;
+          display: -webkit-flex;
+        }
+        .org-list-wrap li .response {
+          flex: 1;
+          -webkit-flex: 1;
+        }
+        .org-list-wrap li .fixed {
+          width: 1.0666666667rem;
+        }
+        .org-list-wrap li i {
+          height: 1.0666666667rem;
+          background-image: url(../asset/images/jg_icon@2x.png);
+          background-repeat: no-repeat;
+        }
+        .org-list-wrap li p {
+          height: 100%;
+          padding-top: 0.5333333333rem;
+          font-size: 0.32rem;
+          color: #0c0c0c;
+          line-height: 0.4533333333rem;
+          padding-left: 0.2666666667rem;
+        }
+        .org-list-wrap li:nth-of-type(2n-1) {
+          float: left;
+        }
+        .org-list-wrap li:nth-of-type(2n) {
+          float: right;
+        }
+
+        .org-list-wrap li:nth-of-type(1) i {
+          background-position: -0.4rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(2) i {
+          background-position: -1.6rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(3) i {
+          background-position: -2.8rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(4) i {
+          background-position: -4rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(5) i {
+          background-position: -5.2rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(6) i {
+          background-position: -6.4rem -0.4666666667rem;
+        }
+
+        .org-list-wrap li:nth-of-type(7) i {
+          background-position: -0.4rem -1.8rem;
+        }
+
+        .org-list-wrap li:nth-of-type(8) i {
+          background-position: -1.6rem -1.8rem;
+        }
+
+        .org-list-wrap li:nth-of-type(9) i {
+          background-position: -2.8rem -1.8rem;
+        }
+
+        .org-list-wrap li:nth-of-type(10) i {
+          background-position: -4rem -1.8rem;
+        }
+
+        .org-list-wrap li:nth-of-type(11) i {
+          background-position: -5.2rem -1.8rem;
+        }
+
+        .org-list-wrap li:nth-of-type(12) i {
+          background-position: -6.4rem -1.8rem;
+        }
+
+        /*# sourceMappingURL=dist/index.css.map */
+
+    </style>
+    <script src="lib/flexible.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header"></div>
+        <div class="org-list-wrap">
+            <ul>
+                <li><i class="org-bg fixed"></i><p class="response">党政综合办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">党建办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">经济发展办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">综治维稳信访办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">城建城管办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">人力资源和社会保障服务站</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">卫生和计划生育办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">财政所</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">征拆安置办公室</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">安监站</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">农技环保站</p></li>
+                <li><i class="org-bg fixed"></i><p class="response">民政所</p></li>
+            </ul>
         </div>
-    </body>
+    </div>
+</body>
 </html>
+
